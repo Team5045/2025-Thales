@@ -1,12 +1,12 @@
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.feeder;
-import edu.wpi.first.wpilibj.Timer;
 
 public class autodispense extends Command{
-    private feeder dispenser;
-    private Timer timer;
+    private final feeder dispenser;
+    private final Timer timer;
 
     // Constructor
     public autodispense(feeder d){
