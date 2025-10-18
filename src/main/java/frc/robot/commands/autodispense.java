@@ -24,7 +24,7 @@ public class autodispense extends Command{
     // actual command
     @Override
     public void execute(){
-        dispenser.gimmemorpowa();
+        dispenser.dispense();
     }
 
     // in case of an interuption if interrupted boolean changed will halt action

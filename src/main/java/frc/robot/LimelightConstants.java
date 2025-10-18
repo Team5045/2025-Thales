@@ -16,26 +16,29 @@ public class LimelightConstants {
     
     public final static double tag_rot = 0.0;
     // TODO: Tune these
-    public final static double tag_Z_left = -0.45;//-0.75
-    public final static double tag_X_left = -0.11;//-0.2
+    public final static double tag_Z_left = -0.4;//-0.75
+    public final static double tag_X_left = -0.07;//-0.2
     public final static double tag_Z_right = -0.45;
     public final static double tag_X_right = 0.27; // tune later
 
     public final static double maxTrackingDistance = 3; // meters
     // TODO: Tune max forward speed
-    public final static double maxForwardSpeed = 1;
-    public final static double maxForwardAcceleration = 0.18;
-    public final static double maxSideSpeed = 0.7;
-    public final static double maxSideAcceleration = 0.18;
+    
+    public final static double maxForwardSpeed = 2; // TODO: Try 1.5 or higher (prev 1)
+    public final static double maxForwardAcceleration = 0.25; // TODO: Try 0.35 or higher (prev 0.18)
+    public final static double maxSideSpeed = 2; // TODO: Try 2 or higher (prev 1.5)
+    public final static double maxSideAcceleration = 0.25; // TODO: Try 0.25 or higher (prev 0.18)
+    public final static double maxRotSpeed = 0.2; // TODO: Tune this (rad/s)
+    public final static double maxRotAcceleration = 0.18; // TODO: Tune thid (rad/s^2)
 
     // TODO: See if we can eliminate ki
 
     public final static double forwards_kp = 0.7; // 1
-    public final static double forwards_ki = 0.1;
+    public final static double forwards_ki = 0.1; // TODO: Try 0 (prev 0.1)
     public final static double forwards_kd = 0;
 
     public final static double side_kp = 0.7; // 0.8
-    public final static double side_ki = 0.1; // 0.1
+    public final static double side_ki = 0.2; // TODO: Try 0 (prev 0.1)
     public final static double side_kd = 0;
 
     public final static double rot_kp = 0.1;

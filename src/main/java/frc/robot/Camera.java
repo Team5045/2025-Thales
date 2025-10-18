@@ -12,13 +12,14 @@ public class Camera {
 
     private static ProfiledPIDController xPID = new ProfiledPIDController(LimelightConstants.forwards_kp, LimelightConstants.forwards_ki, LimelightConstants.forwards_kd, new TrapezoidProfile.Constraints(LimelightConstants.maxForwardSpeed, LimelightConstants.maxForwardAcceleration));
     private static ProfiledPIDController yPID = new ProfiledPIDController(LimelightConstants.side_kp, LimelightConstants.side_ki, LimelightConstants.side_kd, new TrapezoidProfile.Constraints(LimelightConstants.maxSideSpeed, LimelightConstants.maxSideAcceleration));
-    private static PIDController rotPID = new PIDController(LimelightConstants.rot_kp, LimelightConstants.rot_ki, LimelightConstants.rot_kd);
+    private static ProfiledPIDController rotPID = new ProfiledPIDController(LimelightConstants.rot_kp, LimelightConstants.rot_ki, LimelightConstants.rot_kd, new TrapezoidProfile.Constraints(LimelightConstants.maxRotSpeed, LimelightConstants.maxRotAcceleration));
     private static SimpleMotorFeedforward driveFF = new SimpleMotorFeedforward(LimelightConstants.driveFF_ks, LimelightConstants.driveFF_kv, LimelightConstants.driveFF_ka);
 
     public static void init(){
         LimelightHelpers.setCameraPose_RobotSpace(LimelightConstants.name, LimelightConstants.cameraPoseForward, LimelightConstants.cameraPoseSide, LimelightConstants.cameraPoseUp, LimelightConstants.cameraPoseRoll, LimelightConstants.cameraPosePitch, LimelightConstants.cameraPoseYaw);
         xPID.setTolerance(LimelightConstants.x_thres);
         yPID.setTolerance(LimelightConstants.y_thres);
+        rotPID.setTolerance(LimelightConstants.rot_thres);
         yPID.setIZone(0.5);
         xPID.setIZone(0.7);
         updateCurrentPose();
@@ -83,6 +84,6 @@ public class Camera {
     public static boolean checkAligned(){
         return xPID.atGoal() &&
             yPID.atGoal() &&
-            Math.abs(getRotDiff()) < LimelightConstants.rot_thres;
+            rotPID.atGoal();
     }
 }   

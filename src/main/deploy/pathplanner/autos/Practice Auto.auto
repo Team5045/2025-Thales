@@ -7,13 +7,25 @@
         {
           "type": "path",
           "data": {
-            "pathName": "BottomCenterToLeftSource (Practice Path)"
+            "pathName": "practice Path"
           }
         },
         {
-          "type": "path",
+          "type": "named",
           "data": {
-            "pathName": "Testpathp1"
+            "name": "alignReefLeft"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "autoL2up"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 1.0
           }
         },
         {
@@ -23,21 +35,15 @@
           }
         },
         {
-          "type": "path",
+          "type": "wait",
           "data": {
-            "pathName": "BottomCenterToLeftSource (Practice Path)"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Testpathp1"
+            "waitTime": 1.0
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "autodispense"
+            "name": "autodown"
           }
         }
       ]

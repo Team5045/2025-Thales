@@ -11,6 +11,7 @@ public class autoL2up extends Command {
     public autoL2up(elevator_PS L){
         this.m_elevator = L;
         this.timer = new Timer();
+        addRequirements(this.m_elevator);
     }
 
     @Override
@@ -22,7 +23,7 @@ public class autoL2up extends Command {
     @Override
     @SuppressWarnings("removal")
     public void execute(){
-        m_elevator.setGoal(-8); 
+        m_elevator.setGoal(-5); 
         m_elevator.enable();
     }
 

@@ -38,6 +38,7 @@ import frc.robot.commands.autodispenseMax;
 import frc.robot.commands.autodown;
 import frc.robot.commands.alignReefLeft;
 import frc.robot.commands.alignReefRight;
+import frc.robot.commands.autoAlignReefLeft;
 import frc.robot.commands.moveForward;
 
 public class RobotContainer {
@@ -75,6 +76,7 @@ public class RobotContainer {
     public final autodispenseMax m_autodispenseMax = new autodispenseMax(dispenser);
     public final autoL3up m_autoL3up = new autoL3up(m_elevator);
     public final autoL2up m_autoL2up = new autoL2up(m_elevator);
+    
     public final autodown m_autodown = new autodown(m_elevator);
     public boolean b_hold = false;
     public final Command driveCommand = drivetrain.applyRequest(() ->
@@ -84,6 +86,9 @@ public class RobotContainer {
     );
     public final alignReefLeft m_alignReefLeft = new alignReefLeft(drivetrain);
     public final alignReefRight m_alignReefRight = new alignReefRight(drivetrain);
+    
+    public final autoAlignReefLeft m_autoAlignReefLeft = new autoAlignReefLeft(drivetrain);
+    
     public final moveForward m_moveForward = new moveForward(drivetrain);
 
     public RobotContainer() {
@@ -107,7 +112,7 @@ public class RobotContainer {
         // If all goes wrong
         autoChooser.addOption("Cycle Center", kCycleCenter);
         
-        // autoChooser.addOption("Practice Auto (Practice Only)", kPracticeAuto);
+        autoChooser.addOption("Practice Auto (Practice Only)", kPracticeAuto);
         SmartDashboard.putData(autoChooser);
 
         // Debugging
@@ -119,7 +124,7 @@ public class RobotContainer {
         NamedCommands.registerCommand("autodispenseMax", m_autodispenseMax);
         NamedCommands.registerCommand("autoL3up", m_autoL3up);
         NamedCommands.registerCommand("autodown", m_autodown);
-        NamedCommands.registerCommand("alignReefLeft", m_alignReefLeft);
+        NamedCommands.registerCommand("alignReefLeft", m_autoAlignReefLeft);
         NamedCommands.registerCommand("autoL2up", m_autoL2up);
     }
 
@@ -153,7 +158,7 @@ public class RobotContainer {
         // Elevator Controls
         joystick2.y().onTrue(
         Commands.runOnce(() -> {
-        m_elevator.setGoal(-26); // prev -26
+        m_elevator.setGoal(-27); // prev -26
         m_elevator.enable();
         },
         m_elevator));
